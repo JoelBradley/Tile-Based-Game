@@ -1,37 +1,42 @@
-//canvas setup
-var canvas = document.getElementById('gameCanvas');
-var context = canvas.getContext('2d');
+var canvas = document.getElementById("gameCanvas");
+var context = canvas.getContext("2d");
 
 
+var width = 0;
 
 function tick(){
-  console.log("Ticking!");
+  console.log("ticking!");
+  width++;
 }
 
 function render(){
   context.fillStyle = 'black';
-  context.fillRect(0, 0, canvas.width, canvas.height);
-  context.fillStyle = "#FF0000"
-  context.fillRect(10,240,now/10,56);
+  context.fillRect(0,0,canvas.width,canvas.height);
+  context.fillStyle = "#FF3240";
+  context.fillRect(100,123,width,512);
 }
-function getTimeMillis() {
-  return window.performance && window.performance.now ? window.performance.now() : new Date().getTime();
+
+function getTimeMillis(){
+  return window.performace && window.performace.now ? window.performace.now() : new Date().getTime();
 }
 
 var now,
 dt = 0,
 last = getTimeMillis(),
-step = 1 / 60;
-function frame() {
+step = 1/60;
+function frame(){
   now = getTimeMillis();
-  dt = dt + Math.min(1, (now - last) / 1000);
-  while (dt > step) {
-    dt = dt - step;
+  dt = dt + Math.min(1,(now-last)/1000);
+  while(dt > step){
+    dt-=step;
     tick();
   }
+
   render();
-  last = now;
+  last  = now;
   requestAnimationFrame(frame);
 }
+
+
 
 requestAnimationFrame(frame);
