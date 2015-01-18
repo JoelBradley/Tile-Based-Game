@@ -3,18 +3,27 @@ var canvas = document.getElementById('gameCanvas');
 var context = canvas.getContext('2d');
 
 
-var level = new Level(32,32);
+var tiles = [];
+var levelWidth = 32;
+var levelHeight = 32;
+for(var x=0;x<levelWidth;x++){
+  for(var y=0;y<levelHeight;y++){
+    tiles[x+(levelWidth*y)] = Math.floor(Math.random()*3);
+  }
+}
 
 function tick(){
   console.log("Ticking!");
-  level.tick();
 }
 
 function render(){
   context.fillStyle = 'black';
   context.fillRect(0, 0, canvas.width, canvas.height);
-  level.draw();
-  
+  for(var x=0;x<levelWidth;x++){
+    for(var y=0;y<levelHeight;y++){
+      tile[tiles[x+(levelWidth*y)]].draw(x<<5,y<<5);
+    }
+  }
 }
 function timestamp() {
   return window.performance && window.performance.now ? window.performance.now() : new Date().getTime();

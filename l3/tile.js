@@ -11,6 +11,6 @@ Tile.prototype.draw = function (x,y) {
   context.fillRect(x,y,32,32);
 };
 var tile = [];
-var grass = new Tile(0,"#00FF00");
-var water = new Tile(1,"#0000FF");
-var stone = new Tile(2,"#999999");
+var blank = new Tile(0,"#FF0000");
+var grass = new Tile(1,"#00FF00");
+var water = new Tile(2,"#0000FF");
